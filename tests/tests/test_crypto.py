@@ -10,5 +10,6 @@ class cryptoTest(unittest.TestCase):
 	def test_pad_message(self):
 		padded_message = crypto.padMessage("10101010")
 		self.assertEqual(len(padded_message),1600)
+
 if __name__ == '__main__':
 	unittest.main()

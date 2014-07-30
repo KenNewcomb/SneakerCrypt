@@ -1,9 +1,18 @@
+"""
+This class defines a Message object. There are three steps required for Message encryption/decryption:
+1. String to binary conversion
+2. Message padding
+3. Encryption with key
+
+Each step of the encryption process has a function and boolean value associated with it.
+"""
 class Message:
 
 	def __init__(self, message):
 		self.message = message
-		self.isEncrypted = False
+		self.isBinary = False
 		self.isPadded = False
+		self.isEncrypted = False
 
 	def toBinary(self):
 		"Converts a string message to a binary string format"

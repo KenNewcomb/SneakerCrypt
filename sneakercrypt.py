@@ -29,3 +29,5 @@ sample_message.depad()
 print("depadded message:\n" + repr(sample_message))
 sample_message.toString()
 print("plaintext:\n" + repr(sample_message))
+
+print(keyGen.getPad(30))

@@ -3,7 +3,11 @@ from modules import keyGen
 
 ## Current demonstration of functionality:
 
-# The program will take any string as an input. It will convert the unicode string to binary, pad the message, generate a random key, encrypt the message against the pad, decrypt the message against the pad, depad the message, and finally convert the message back to readable strings. 
+# The program will take any string as an input. 
+# It will convert the unicode string to binary, pad the message,
+# generate a random key, encrypt the message against the pad,
+# decrypt the message against the pad, depad the message,
+# and finally convert the message back to readable strings. 
 
 input_message = input("Input a message:")
 sample_message = Message(input_message)

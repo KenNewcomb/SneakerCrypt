@@ -17,6 +17,7 @@ class Message:
 		self.isPadded = True
 
 	def encrypt(self,key):
+		"Encrypts the message with the given key"
 		cryptobits = list(zip(key,self.message))
 		cypher = []
 		for pair in cryptobits:
@@ -24,3 +25,13 @@ class Message:
 			cypher.append(pair)
 		self.message =  "".join([str(bit) for bit in cypher])
 		self.isEncrypted = True
+	
+	def decrypt(self,key):
+		"Decrypts the message with given key"
+		cryptobits = list(zip(key,self.message))
+		message = []
+		for pair in cryptobits:
+			pair = ord(pair[0]) ^ ord(pair[1])
+			message.append(pair)
+		self.message = "".join([str(bit) for bit in message])
+		self.isEncrypted = False

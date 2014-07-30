@@ -19,8 +19,12 @@ class Message:
 
 	def toBinary(self):
 		"Converts a string message to a binary string format"
-		letter_array = [ord(c) for c in self.message]
-		self.message =  "".join([bin(letter)[2:] for letter in letter_array])
+		letter_array = [ord(c) for c in self.message][:2]
+		binary_array = []
+		for letter in letter_array:
+			letter = format(letter, "08b")
+			binary_array.append(letter)
+		self.message =  "".join([letter for letter in binary_array])
 	
 	def pad(self):
 		"Ensures that a binary message is 1600 bits long to obfuscate the true message length"
@@ -48,6 +52,19 @@ class Message:
 		self.message = "".join([str(bit) for bit in message])
 		self.isEncrypted = False
 
-	def decode(self):
-		"Decodes binary data into a unicode string and disposes the extra bits."
-		print(bin(self.message).decode("utf-8"))
+	def depad(self):
+		"Parses the binary stream, byte by byte, and removes the padding."
+		plaintext = []
+		i = 0
+		while self.message[i:i+8] != '00000000': #end of data
+			plaintext.append(self.message[i:i+8])
+			i = i + 8
+		self.message= "".join([str(letter) for letter in plaintext])
+
+	def toString(self):
+		"Converts a binary, utf-8 message into a readable string"
+		i = 0
+		plaintext = []
+		while i < len(self.message):
+			plaintext.append(chr(self.message[i:i+8])
+		

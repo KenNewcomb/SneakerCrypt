@@ -27,11 +27,12 @@ class Message:
 
 	def encrypt(self,key):
 		"Encrypts the message with the given key"
-		cryptobits = list(zip(key,self.message))
+		cryptobits = list(zip(bin(key)[2:],self.message))
 		cypher = []
 		for pair in cryptobits:
 			pair = ord(pair[0]) ^ ord(pair[1])
 			cypher.append(pair)
+		print(cypher)
 		self.message =  "".join([str(bit) for bit in cypher])
 		self.isEncrypted = True
 	

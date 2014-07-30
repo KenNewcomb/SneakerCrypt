@@ -1,4 +1,4 @@
 import random
 
 def get(numbits):
-	print("".join(str(random.SystemRandom.randint(0,1) for i in range(numbits))))
+	return random.randint(0, 2**numbits -1)

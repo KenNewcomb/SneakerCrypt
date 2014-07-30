@@ -8,9 +8,6 @@ Each step of the encryption process has a function and boolean value associated 
 """
 class Message:
 
-	def __str__(self):
-		return self.message
-	
 	def __repr__(self):
 		return self.message
 
@@ -38,7 +35,6 @@ class Message:
 		for pair in cryptobits:
 			pair = ord(pair[0]) ^ ord(pair[1])
 			cypher.append(pair)
-		print(cypher)
 		self.message =  "".join([str(bit) for bit in cypher])
 		self.isEncrypted = True
 	

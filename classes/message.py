@@ -8,6 +8,12 @@ Each step of the encryption process has a function and boolean value associated 
 """
 class Message:
 
+	def __str__(self):
+		return self.message
+	
+	def __repr__(self):
+		return self.message
+
 	def __init__(self, message):
 		self.message = message
 		self.isBinary = False

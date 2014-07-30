@@ -1,23 +1,15 @@
-from modules import crypto
+from classes.message import Message
 
 ## Current demonstration of functionality:
-message = input("Input a message:")
+input_message = input("Input a message:")
+sample_message = Message(input_message)
 key = input("Input a key:")
 
-print("message =" + message)
-print("message length=" + str(len(message)))
+sample_message.toBinary()
+sample_message.pad()
 
-binary_string = crypto.messageToBinary(message)
-print("binary =" + binary_string)
-print("binary length=" + str(len(binary_string)))
+sample_message.encrypt(sample_message.message)
 
-padded_message = crypto.padMessage(binary_string)
-print("padded message=" + padded_message)
-print("padded message length=" + str(len(padded_message)))
-# for the purpose of example, the key will be generated as such:
-key = crypto.messageToBinary(key)
-key = crypto.padMessage(key)
+key = input("Input the key to decrypt")
 
-cyphertext = crypto.encrypt(key,padded_message)
-print("cyphertext=" + cyphertext)
-print("cyphertext length=" + str(len(cyphertext)))
+

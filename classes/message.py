@@ -19,7 +19,7 @@ class Message:
 
 	def toBinary(self):
 		"Converts a string message to a binary string format"
-		letter_array = [ord(c) for c in self.message][:2]
+		letter_array = [ord(c) for c in self.message]
 		binary_array = []
 		for letter in letter_array:
 			letter = format(letter, "08b")
@@ -59,12 +59,15 @@ class Message:
 		while self.message[i:i+8] != '00000000': #end of data
 			plaintext.append(self.message[i:i+8])
 			i = i + 8
-		self.message= "".join([str(letter) for letter in plaintext])
+		self.message = "".join([str(letter) for letter in plaintext])
+		self.isPadded = False
 
 	def toString(self):
 		"Converts a binary, utf-8 message into a readable string"
 		i = 0
 		plaintext = []
 		while i < len(self.message):
-			plaintext.append(chr(self.message[i:i+8])
-		
+			plaintext.append(chr(int((self.message[i:i+8]),2)))
+			i = i + 8
+		self.message = "".join([str(letter) for letter in plaintext])
+		self.isBinary = False

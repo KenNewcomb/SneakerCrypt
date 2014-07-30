@@ -1,15 +1,17 @@
 from classes.message import Message
+from modules import keyGen
 
 ## Current demonstration of functionality:
 input_message = input("Input a message:")
 sample_message = Message(input_message)
-key = input("Input a key:")
+
 
 # Encryption
 sample_message.toBinary()
 sample_message.pad()
-sample_message.encrypt(sample_message.message)
+key = keyGen.get(len(sample_message.message))
+print(key)
+sample_message.encrypt(key)
 print(sample_message.message)
-
 # Decryption
 

@@ -40,10 +40,14 @@ class Message:
 	
 	def decrypt(self,key):
 		"Decrypts the message with given key"
-		cryptobits = list(zip(key,self.message))
+		cryptobits = list(zip(bin(key)[2:],self.message))
 		message = []
 		for pair in cryptobits:
 			pair = ord(pair[0]) ^ ord(pair[1])
 			message.append(pair)
 		self.message = "".join([str(bit) for bit in message])
 		self.isEncrypted = False
+
+	def decode(self):
+		"Decodes binary data into a unicode string and disposes the extra bits."
+		print(bin(self.message).decode("utf-8"))

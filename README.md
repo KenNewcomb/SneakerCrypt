@@ -11,3 +11,6 @@ Sneakercrypt is a project focused on creating a chat client with easy-to-use OTP
 
 2. How large should a key be?
    64MB may be sufficient. A key this size will take a few minutes to generate.
+
+### Project Updates:
++ 07/30/2014 - Working encryption/decryption.

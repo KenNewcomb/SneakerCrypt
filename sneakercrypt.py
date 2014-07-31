@@ -8,7 +8,7 @@ from modules import keyGen
 # generate a random key, encrypt the message against the pad,
 # decrypt the message against the pad, depad the message,
 # and finally convert the message back to readable strings. 
-"""
+
 input_message = input("Input a message:")
 sample_message = Message(input_message)
 
@@ -29,11 +29,12 @@ sample_message.depad()
 print("depadded message:\n" + repr(sample_message))
 sample_message.toString()
 print("plaintext:\n" + repr(sample_message))
-"""
+
+
 
 # This part of the program generates a 50kb pad, and writes the pad to a file.
-"""
+
 pad = keyGen.getPad(50)
 print(pad)
-keyGen.writePad("/home/mango/Projects/sneakercrypt/padfile", pad)
-"""
+keyGen.writePad("/home/mango/Projects/sneakercrypt/userdata/padfile", pad)
+

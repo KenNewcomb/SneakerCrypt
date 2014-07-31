@@ -13,9 +13,6 @@ class Message:
 
 	def __init__(self, message):
 		self.message = message
-		self.isBinary = False
-		self.isPadded = False
-		self.isEncrypted = False
 
 	def toBinary(self):
 		"Converts a string message to a binary string format"
@@ -30,7 +27,6 @@ class Message:
 		"Ensures that a binary message is 1600 bits long to obfuscate the true message length"
 		while(len(self.message) < 1600):
 			self.message += "0"
-		self.isPadded = True
 
 	def encrypt(self,key):
 		"Encrypts the message with the given key"
@@ -40,7 +36,6 @@ class Message:
 			pair = ord(pair[0]) ^ ord(pair[1])
 			cypher.append(pair)
 		self.message =  "".join([str(bit) for bit in cypher])
-		self.isEncrypted = True
 	
 	def decrypt(self,key):
 		"Decrypts the message with given key"
@@ -50,7 +45,6 @@ class Message:
 			pair = ord(pair[0]) ^ ord(pair[1])
 			message.append(pair)
 		self.message = "".join([str(bit) for bit in message])
-		self.isEncrypted = False
 
 	def depad(self):
 		"Parses the binary stream, byte by byte, and removes the padding."
@@ -60,7 +54,6 @@ class Message:
 			plaintext.append(self.message[i:i+8])
 			i = i + 8
 		self.message = "".join([str(letter) for letter in plaintext])
-		self.isPadded = False
 
 	def toString(self):
 		"Converts a binary, utf-8 message into a readable string"
@@ -70,4 +63,3 @@ class Message:
 			plaintext.append(chr(int((self.message[i:i+8]),2)))
 			i = i + 8
 		self.message = "".join([str(letter) for letter in plaintext])
-		self.isBinary = False

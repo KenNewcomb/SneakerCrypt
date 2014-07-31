@@ -32,9 +32,10 @@ print("plaintext:\n" + repr(sample_message))
 
 
 
-# This part of the program generates a 50kb pad, and writes the pad to a file.
+# This part of the program generates a 25kb pad, and writes the pad to a file.
 
-pad = keyGen.getPad(50)
+pad = keyGen.getPad(25) # of kilobytes
 print(pad)
-keyGen.writePad("/home/mango/Projects/sneakercrypt/userdata/padfile", pad)
+id = 1
+keyGen.writePad("/home/mango/Projects/SneakerCrypt/keys/", str(id), key)
 

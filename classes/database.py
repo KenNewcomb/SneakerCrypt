@@ -30,9 +30,21 @@ class Database:
 		self.db.commit()
 
 	def printUsers(self):
-		"""Print all users in the user table"""
+		'''Print all users in the user table'''
 		cursor = self.db.cursor()
 		cursor.execute('''SELECT * FROM users''')
 		users = cursor.fetchall()
 		for user in users:
-			print("ID: " + str(user[0]) + "\nUsername: " + user[1])
+			for column in user:
+				print(column)
+	
+	def addUserKey(self, username, path):
+		'''Adds the key associated with the messages SENT BY THE USER to "username"'''
+		cursor = self.db.cursor()
+		cursor.execute('''UPDATE users SET paduser1 = ? WHERE username = ? ''', (path, username,))
+		self.db.commit()
+
+	def addContactKey(self, username, path):
+		'''Adds the key associated with the messages SENT BY THE CONTACT, "username"'''
+		cursor = self.db.curson()
+		cursor.execute('''UPDATE users SET paduser2 = ? WHERE username = ? ''', (path, username))

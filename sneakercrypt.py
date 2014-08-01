@@ -2,9 +2,9 @@ from classes.message import Message
 from modules import keyGen
 from classes.database import Database
 
-#######################################################################
-## Current demonstration of functionality (uncomment desired section) #
-#######################################################################
+######################################################################
+# Current demonstration of functionality (uncomment desired section) #
+######################################################################
 
 # The program will take any string as an input, encrypt it with a random pad,
 # and decrypt with the same pad. 
@@ -36,10 +36,9 @@ keyGen.writePad("/home/mango/Projects/SneakerCrypt/keys/", str(id), key)
 '''
 
 # User database functionality (in progress)
-'''
+
 db = Database()
 db.makeUserTable()
-db.addUser("Ken", 0,0,'somestring','anotherstring')
+db.addUser("Ken")
 db.printUsers()
 db.removeUser("Ken")
-'''

@@ -43,3 +43,6 @@ keyGen.writePad("/home/mango/Projects/SneakerCrypt/keys/", str(id), key)
 # User database functionality:
 db = Database()
 db.makeUserTable()
+db.addUser("Ken", 0,0,'somestring','anotherstring')
+db.printUsers()
+db.removeUser("Ken")

@@ -9,13 +9,13 @@ class Database:
 	def databaseClose(self):
 		self.db.close()
 
-	def databaseExists(self):
+	def makeUserTable(self):
 		cursor = self.db.cursor()
-		result = cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' AND name='table_name';""") 
+		result = cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' AND name='users';""") 
 		if cursor.fetchall() == []: # no table exists
-			return False
-		else:
-			return True
+			return cursor.execute('''CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT)''')
 
 	def addUser(username, pad1 = '', pad2 = ''):
 		cursor = self.db.cursor()
+		db.commit()
+		

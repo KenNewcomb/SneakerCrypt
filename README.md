@@ -1,5 +1,5 @@
 # SneakerCrypt
-Sneakercrypt is easy-to-use chat software that implements the theoretically secure [one-time-pad encryption scheme](https://en.wikipedia.org/One_Time_Pad).
+Sneakercrypt is easy-to-use chat software that implements the theoretically secure [one-time-pad encryption scheme](https://en.wikipedia.org/wiki/One-time_pad).
 
 ### Project Goals
 1. Implement cryptographic functions with tests.

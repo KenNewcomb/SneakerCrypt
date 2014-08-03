@@ -12,7 +12,3 @@ def getPad(numKiloBytes):
 		key = int(str(key) + str(part))
 		print("Generated " + str(i) + " kilobytes. " + str(int(100*i/numKiloBytes)) + "% complete.")
 	return key
-
-def writePad(path, filename, key):
-	padfile = open(path+filename, 'w')
-	padfile.write((str(key)))		

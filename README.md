@@ -18,7 +18,7 @@ Sneakercrypt is easy-to-use chat software that implements the theoretically secu
 
 3. GUI?
 
-   I am currently looking into Flask for developing a web interface.
+   I am currently looking into WebSockets for developing a web interface.
 
 ### Project Updates:
 + 08/01/2014 - Database development in progress

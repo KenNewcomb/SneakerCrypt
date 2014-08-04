@@ -36,10 +36,29 @@ keyGen.writePad("/home/mango/Projects/SneakerCrypt/keys/", str(id), key)
 '''
 
 # User database functionality (in progress)
-
+'''
 db = Database()
 db.makeUserTable()
 db.addUser("Ken")
 db.printUsers()
 db.addUserKey("Ken", "path_to_keyfile")
 db.printUsers()
+'''
+
+# Start a WebSocket server
+
+if __name__ == '__main__':
+
+	import sys
+
+	from classes.serverprotocol import serverProtocol
+	from twisted.python import log
+	from twisted.internet import reactor
+	log.startLogging(sys.stdout)
+
+	from autobahn.twisted.websocket import WebSocketServerFactory
+	factory = WebSocketServerFactory()
+	factory.protocol = serverProtocol
+
+	reactor.listenTCP(9000, factory)
+	reactor.run()

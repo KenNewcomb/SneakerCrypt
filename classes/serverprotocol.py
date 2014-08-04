@@ -1,6 +1,6 @@
 from autobahn.twisted.websocket import WebSocketServerProtocol
 
-class ServerProtocol(WebSocketServerProtocol):
+class serverProtocol(WebSocketServerProtocol):
 
 	def onMessage(self, payload, isBinary):
 		## echo back message

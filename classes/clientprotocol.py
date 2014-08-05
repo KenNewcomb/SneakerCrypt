@@ -1,6 +1,6 @@
 from autobahn.twisted.websocket import WebSocketClientProtocol
 
-class MyClientProtocol(WebSocketClientProtocol):
+class clientProtocol(WebSocketClientProtocol):
 
 	def onConnect(self):
 		print("Connected to Server: {}".format(response.peer))
@@ -14,5 +14,5 @@ class MyClientProtocol(WebSocketClientProtocol):
 		else:
 			print("Text message received: {0}".format(payload.decode('utf8')))
 
-	def onClose(self):
-		## Do something...
+	def onClose(self, wasClean, code, reason):
+		print("Connection closed.")

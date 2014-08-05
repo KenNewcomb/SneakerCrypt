@@ -7,10 +7,13 @@ class serverProtocol(WebSocketServerProtocol):
 	
 	def onOpen(self):
 		print("WebSocket connection open")
-`
+
 	def onMessage(self, payload, isBinary):
 		## echo back message
 		self.sendMessage(payload, isBinary)
 		s = payload.decode('utf8')
 		payload = s.encode('utf8')
 		self.sendMessage(payload, isBinary = False)
+
+	def onClose(self, wasClean, code, reason):
+		print("Connection closed.")

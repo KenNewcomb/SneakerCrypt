@@ -7,6 +7,7 @@ class clientProtocol(WebSocketClientProtocol):
 
 	def onOpen(self):
 		self.sendMessage(u"Hello, world!".encode('utf8'))
+		messageSender()
 
 	def onMessage(self, payload, isBinary):
 		if isBinary:
@@ -16,3 +17,8 @@ class clientProtocol(WebSocketClientProtocol):
 
 	def onClose(self, wasClean, code, reason):
 		print("Connection closed.")
+
+	def messageSender():
+		while True:
+			message = input("Message:")
+			self.sendMessage(message.encode('utf8'))

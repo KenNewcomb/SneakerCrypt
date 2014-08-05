@@ -1,7 +1,6 @@
 import sys # required for logging
 from classes.serverprotocol import serverProtocol
 from classes.clientprotocol import clientProtocol
-from modules import *
 from twisted.python import log
 from twisted.internet import reactor
 from autobahn.twisted.websocket import WebSocketServerFactory
@@ -24,6 +23,3 @@ if __name__ == '__main__':
 	else:
 		print("Error. Please see documentation for usage instructions.")
 		sys.exit(0)
-
-	while(True):
-		messageToSend = input("Enter a message to send:")

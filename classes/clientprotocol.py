@@ -3,7 +3,7 @@ from autobahn.twisted.websocket import WebSocketClientProtocol
 class MyClientProtocol(WebSocketClientProtocol):
 
 	def onConnect(self):
-		## Do something...
+		print("Connected to Server: {}".format(response.peer))
 
 	def onOpen(self):
 		self.sendMessage(u"Hello, world!".encode('utf8'))

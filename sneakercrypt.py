@@ -7,9 +7,7 @@ from autobahn.twisted.websocket import WebSocketServerFactory
 
 if __name__ == '__main__':
 
-	## Test functionality:
 	log.startLogging(sys.stdout)
-
 	while True:
 		
 		messageToSend = input("Enter a message to send")

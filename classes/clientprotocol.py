@@ -2,12 +2,12 @@ from autobahn.twisted.websocket import WebSocketClientProtocol
 
 class clientProtocol(WebSocketClientProtocol):
 
-	def onConnect(self):
+	def onConnect(self, response):
 		print("Connected to Server: {}".format(response.peer))
 
 	def onOpen(self):
 		self.sendMessage(u"Hello, world!".encode('utf8'))
-		messageSender()
+		self.messageSender()
 
 	def onMessage(self, payload, isBinary):
 		if isBinary:
@@ -18,7 +18,7 @@ class clientProtocol(WebSocketClientProtocol):
 	def onClose(self, wasClean, code, reason):
 		print("Connection closed.")
 
-	def messageSender():
+	def messageSender(self):
 		while True:
 			message = input("Message:")
 			self.sendMessage(message.encode('utf8'))

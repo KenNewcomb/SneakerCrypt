@@ -1,0 +1,8 @@
+{
+  "name": "socket-chat-example",
+  "version": "0.0.1",
+  "description": "SneakerCrypt",
+  "dependencies": {
+    "express": "~4.8.3"
+  }
+}

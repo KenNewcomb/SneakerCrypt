@@ -10,6 +10,7 @@ if __name__ == '__main__':
 
 	log.startLogging(sys.stdout) # Start logging to console
 	mode = sys.argv[1] # Get server mode from cmdline argument.
+
 	if mode == "server": # Start server
 		factory = WebSocketServerFactory()
 		factory.protocol = serverProtocol
@@ -18,7 +19,7 @@ if __name__ == '__main__':
 	elif mode == "client": # Start client
 		factory = WebSocketClientFactory()
 		factory.protocol = clientProtocol
-		reactor.connectTCP("127.0.0.1", 9000, factory)
+		reactor.connectTCP("73.33.150.160", 9000, factory)
 		reactor.run()
 	else:
 		print("Error. Please see documentation for usage instructions.")

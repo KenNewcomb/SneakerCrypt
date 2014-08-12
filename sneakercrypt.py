@@ -1,26 +1,12 @@
-import sys # required for logging
-from classes.serverprotocol import serverProtocol
-from classes.clientprotocol import clientProtocol
-from twisted.python import log
-from twisted.internet import reactor
-from autobahn.twisted.websocket import WebSocketServerFactory
-from autobahn.twisted.websocket import WebSocketClientFactory
+import sys
+from modules import keyGen, server, client
 
-if __name__ == '__main__':
+mode = sys.argv[1] # Get server mode from cmdline argument.
 
-	log.startLogging(sys.stdout) # Start logging to console
-	mode = sys.argv[1] # Get server mode from cmdline argument.
-
-	if mode == "server": # Start server
-		factory = WebSocketServerFactory()
-		factory.protocol = serverProtocol
-		reactor.listenTCP(9000, factory)
-		reactor.run()
-	elif mode == "client": # Start client
-		factory = WebSocketClientFactory()
-		factory.protocol = clientProtocol
-		reactor.connectTCP("73.33.150.160", 9000, factory)
-		reactor.run()
-	else:
-		print("Error. Please see documentation for usage instructions.")
-		sys.exit(0)
+if mode == "server": # Start server
+	server.startServer()
+elif mode == "client": # Start client
+	client.startClient()
+else:
+	print("Error. Please see documentation for usage instructions.")
+	sys.exit(0)

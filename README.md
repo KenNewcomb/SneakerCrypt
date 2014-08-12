@@ -19,7 +19,7 @@ Sneakercrypt is easy-to-use chat software that implements the theoretically secu
 
 3. What kind of user interface will be available?
    
-   A Node.JS/Socket.IO web based interface will be used.
+   The application will use a web interface, powered by [Asyncio](https://docs.python.org/3/library/asyncio.html) and [WebSocket](https://en.wikipedia.org/wiki/WebSocket).
 
 
 ### Project Updates:

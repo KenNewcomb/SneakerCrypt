@@ -27,8 +27,8 @@ elif mode == 'encrypt' or mode == 'decrypt':
 	pads.printPads()
 	name = input("Please choose a user: ")
 	if mode == 'encrypt':
-		crypto.encrypt(name, pads.getPad(name))
+		crypto.encrypt(pads.getPad(name))
 	else:
-		crypto.decrypt(name, pads.getPad(name))
+		crypto.decrypt(pads.getPad(name))
 else:
 	usage()

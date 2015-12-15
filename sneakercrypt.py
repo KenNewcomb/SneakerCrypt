@@ -1,7 +1,7 @@
 """ sneakercrypt.py: Encryption for the masses. """
 __author = "Ken Newcomb"
 import sys
-from modules import pads, gen
+from modules import pads, gen, crypto
 
 def usage():
 	print("Usage: python3 sneakercrypt.py <command>")
@@ -22,12 +22,13 @@ if mode == 'pads':
 	pads.printPads()
 elif mode == 'generate':
 	gen.genPad()
-elif mode is 'encrypt' or 'decrypt':
+elif mode == 'encrypt' or mode == 'decrypt':
+	print(mode)
 	pads.printPads()
-	answer = input("Please choose a user: ")
-	if mode is 'encrypt':
-		crypto.encrypt(name, pad)
+	name = input("Please choose a user: ")
+	if mode == 'encrypt':
+		crypto.encrypt(name, pads.getPad(name))
 	else:
-		crypto.decrypt(name, padd)
+		crypto.decrypt(name, pads.getPad(name))
 else:
 	usage()

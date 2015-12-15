@@ -26,7 +26,6 @@ def getPad(kb):
 def savePad(name, pad):
 	"""Saves pad to disk."""
 	with open('./pads/{0}'.format(name), 'w') as f:
-		print(type(pad))
 		f.write(pad.decode('UTF-8', errors='ignore'))
 
 def genPad():

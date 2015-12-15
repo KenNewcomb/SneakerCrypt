@@ -5,6 +5,13 @@ def readPads():
 	pads = os.listdir('./pads')
 	return pads
 
+def getPad(user):
+	try:
+		open('./pads/{0}'.format(user), 'r').read()
+	except FileNotFoundError:
+		print("User not found.")
+		exit()
+
 def printPads():
 	pads = readPads()
 	if len(pads) > 0:

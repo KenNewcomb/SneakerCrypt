@@ -2,7 +2,7 @@
 
 def getMessage():
 	print("A Sneakercrypt message can be 200 characters long.")
-	message = input("Message :")
+	message = input("Message : ")
 	return message
 
 def encrypt(name, pad):

@@ -1,7 +1,6 @@
 """ gen.py: Generate a one-time-pad. """
 import random
-import time
-from sys import stdout
+import os
 
 def userPrompt():
 	"""Prompts the user for a bit of input regarding pad generation."""
@@ -20,18 +19,15 @@ def userPrompt():
 	name = input("Please enter a name associated with this key: ")
 	return [name, num_kb]
 	
-def getPad(numKiloBytes):
-	pad = ""
-	for i in range(1,numKiloBytes):
-		part = random.randint(0,2**(8000) -1)
-		pad += str(part)
-		print("Generated " + str(i) + " kilobytes. " + str(int(100*i/numKiloBytes)) + "% complete.")
-	return pad
+def getPad(kb):
+	rand = os.urandom(kb*1000)
+	return rand
 
 def savePad(name, pad):
 	"""Saves pad to disk."""
 	with open('./pads/{0}'.format(name), 'w') as f:
-		f.write(pad)
+		print(type(pad))
+		f.write(pad.decode('UTF-8', errors='ignore'))
 
 def genPad():
 	"""Generates a one-time pad."""
@@ -45,3 +41,4 @@ def genPad():
 	
 	# Save the pad to disk.
 	savePad(name, pad)
+	print("Pad successfully generated.")

@@ -22,3 +22,12 @@ if mode == 'pads':
 	pads.printPads()
 elif mode == 'generate':
 	gen.genPad()
+elif mode is 'encrypt' or 'decrypt':
+	pads.printPads()
+	answer = input("Please choose a user: ")
+	if mode is 'encrypt':
+		crypto.encrypt(name, pad)
+	else:
+		crypto.decrypt(name, padd)
+else:
+	usage()

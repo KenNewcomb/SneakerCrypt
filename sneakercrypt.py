@@ -4,6 +4,7 @@ import sys
 from modules import pads, gen, crypto
 
 def usage():
+	logo()
 	print("Usage: python3 sneakercrypt.py <command>")
 	print("Available Commands:")
 	print("\t1.) pads     - View your stored pads.")
@@ -20,7 +21,6 @@ def logo():
  /(__/  |  |_/|__/\_/|_/| \_/|__/   |_/\___/   |_/ \_/|/|__/ |_/
                                                      /|/|       
                                                      \|\|    """)
-logo()
 # Sanitize input
 if len(sys.argv) != 2:
 	usage()

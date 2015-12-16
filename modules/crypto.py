@@ -18,13 +18,6 @@ def encrypt(pad):
 	while len(message_bytes) < 200:
 		message_bytes.append(0)
 
-	# Confirm that the user wishes to continue.
-	print("Encrypting the message will require 200 bytes. The bytes will be securely removed from your pad.")
-	answer = input("Continue? (Y/n) ")
-	if answer.lower() == 'n':
-		print("Sneakercrypt has exited successfully.")
-		exit()
-	
 	pad_bytes = bytearray(pad)
 	
 	cypherbits = []

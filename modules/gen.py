@@ -1,6 +1,7 @@
 """ gen.py: Generate a one-time-pad. """
 import random
 import os
+import sys
 
 def userPrompt():
 	"""Prompts the user for a bit of input regarding pad generation."""
@@ -22,6 +23,7 @@ def userPrompt():
 def getPad(kb):
 	"""Actually generates the pad."""
 	pad = bytearray()
+	print("Generating pad.")
 	for byte in range(0, 1000*kb):
 		rand = int.from_bytes(os.urandom(1), 'little')
 		pad.append(rand)

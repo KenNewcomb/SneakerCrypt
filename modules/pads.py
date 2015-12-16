@@ -16,8 +16,11 @@ def getPad(user):
 
 def printPads():
 	pads = readPads()
+	
 	if len(pads) > 0:
 		print("Stored Pads:")
 	for pad in pads:
-		print("\t{0}.) {1}".format(pads.index(pad) + 1, pad))
+		# Calculate pad size
+		size = str(os.stat('./pads/{0}'.format(pad)).st_size/1000.0)
+		print("\t{0}.) {1}\t\t{2} KB".format(pads.index(pad) + 1, pad, size))
 		

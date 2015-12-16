@@ -20,13 +20,18 @@ def userPrompt():
 	return [name, num_kb]
 	
 def getPad(kb):
-	rand = os.urandom(kb*1000)
-	return rand
+	"""Actually generates the pad."""
+	# For now, pad is a list of ints, to be pickled.
+	pad = bytearray()
+	for byte in range(0, 1000*kb):
+		rand = int.from_bytes(os.urandom(1), 'little')
+		pad.append(rand)
+	return pad
 
 def savePad(name, pad):
 	"""Saves pad to disk."""
-	with open('./pads/{0}'.format(name), 'w') as f:
-		f.write(pad.decode('UTF-8', errors='ignore'))
+	with open('./pads/{0}.pad'.format(name), 'wb') as f:
+		f.write(pad)
 
 def genPad():
 	"""Generates a one-time pad."""

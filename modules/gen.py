@@ -31,7 +31,7 @@ def getPad(kb):
 
 def savePad(name, pad):
 	"""Saves pad to disk."""
-	with open('./pads/{0}'.format(name), 'wb') as f:
+	with open('./outpads/{0}'.format(name), 'wb') as f:
 		f.write(pad)
 
 def genPad():
@@ -46,4 +46,4 @@ def genPad():
 	
 	# Save the pad to disk.
 	savePad(name, pad)
-	print("Pad successfully generated.")
+	print("Pad successfully written to ./outpads. Distribute the pad via the Sneakernet.")

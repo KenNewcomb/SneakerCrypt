@@ -6,11 +6,14 @@ from modules import pads, gen, crypto
 def usage():
 	logo()
 	print("Usage: python3 sneakercrypt.py <command>")
-	print("Available Commands:")
+	print("Available commands:")
 	print("\t1.) pads     - View your stored pads.")
-	print("\t2.) generate - Generate one-time-pad")
+	print("\t2.) generate - Generate one-time-pad (outpad)")
 	print("\t3.) encrypt  - Encrypt message")
-	print("\t4.) decrypt  - Decrypt message")
+	print("\t4.) decrypt  - Decrypt message\n")
+	print("Pads:")
+	print("\tinpads  - stored in ./inpads/  -  the location of received  pads, used to decrypt incoming messages.")
+	print("\toutpads - stored in ./outpads/ -  the location of generated pads, used to encrypt outgoing messages.")
 	exit()
 
 def logo():
@@ -31,13 +34,15 @@ if mode == 'pads':
 	pads.printPads()
 elif mode == 'generate':
 	gen.genPad()
-elif mode == 'encrypt' or mode == 'decrypt':
-	print(mode)
-	pads.printPads()
-	name = input("Please choose a user: ")
-	if mode == 'encrypt':
-		crypto.encrypt(pads.getPad(name))
-	else:
-		crypto.decrypt(pads.getPad(name))
+elif mode == 'encrypt':
+	pads.printPads('outpad')
+	name = input("Please choose an outpad to encrypt your message: ")
+	crypto.encrypt(pads.getPad(name, 'outpad'))
+	pads.chop(name, 'outpad')
+elif mode == 'decrypt':
+	pads.printPads('inpad')
+	name = input("Please choose an inpad to decrypt your message: ")
+	crypto.decrypt(pads.getPad(name, 'inpad'))
+	pads.chop(name, 'inpad')
 else:
 	usage()

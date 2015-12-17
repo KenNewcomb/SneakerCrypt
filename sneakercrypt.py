@@ -1,4 +1,4 @@
-""" sneakercrypt.py: Encryption for the masses. """
+""" sneakercrypt.py: Unbreakable encryption for the masses. """
 __author = "Ken Newcomb"
 import sys
 from modules import pads, gen, crypto
@@ -7,13 +7,13 @@ def usage():
 	logo()
 	print("Usage: python3 sneakercrypt.py <command>")
 	print("Available commands:")
-	print("\t1.) pads     - View your stored pads.")
+	print("\t1.) pads     - View your stored pads")
 	print("\t2.) generate - Generate one-time-pad (outpad)")
-	print("\t3.) encrypt  - Encrypt message")
-	print("\t4.) decrypt  - Decrypt message\n")
-	print("Pads:")
-	print("\tinpads  - Used to decrypt incoming messages.")
-	print("\toutpads - Used to encrypt outgoing messages.")
+	print("\t3.) encrypt  - Encrypt message with outpad")
+	print("\t4.) decrypt  - Decrypt message with inpad\n")
+	print("OTP Cryptography requires two pads:")
+	print("\tinpads  - Used to decrypt incoming messages. Place your friend's generated pads in your ./inpads/ folder.")
+	print("\toutpads - Used to encrypt outgoing messages. Generate one to give to a friend with the \"generate\" command.")
 	exit()
 
 def logo():
@@ -23,7 +23,8 @@ def logo():
   /  \/ |/ |  |/  /  |  |/_) |/  /  |  /    /  |  |   | |/ \_|  
  /(__/  |  |_/|__/\_/|_/| \_/|__/   |_/\___/   |_/ \_/|/|__/ |_/
                                                      /|/|       
-                                                     \|\|    """)
+                                                     \|\|   
+              Unbreakable Encryption for the Masses.\n """)
 # Sanitize input
 if len(sys.argv) != 2:
 	usage()

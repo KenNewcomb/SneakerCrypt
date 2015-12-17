@@ -12,8 +12,8 @@ def usage():
 	print("\t3.) encrypt  - Encrypt message")
 	print("\t4.) decrypt  - Decrypt message\n")
 	print("Pads:")
-	print("\tinpads  - stored in ./inpads/  -  the location of received  pads, used to decrypt incoming messages.")
-	print("\toutpads - stored in ./outpads/ -  the location of generated pads, used to encrypt outgoing messages.")
+	print("\tinpads  - Used to decrypt incoming messages.")
+	print("\toutpads - Used to encrypt outgoing messages.")
 	exit()
 
 def logo():

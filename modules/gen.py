@@ -46,4 +46,6 @@ def genPad():
 	
 	# Save the pad to disk.
 	savePad(name, pad)
-	print("Pad successfully written to ./outpads. Distribute the pad via the Sneakernet.")
+	print("The the outpad for {0} has been successfully generated.".format(name))
+	print("{0} can use this pad to decrypt your messages (./inpads)".format(name))
+	print("Obtain {0}'s outpad and place it in your inpad folder, and you're good to go.".format(name))

@@ -9,7 +9,6 @@ def readPads():
 def getPad(user, padtype):
 	try:
 		pad = open('./{0}s/{1}'.format(padtype, user), 'rb').read()
-		print("Pad loaded successfully.")
 		return pad
 	except FileNotFoundError:
 		print("User not found.")

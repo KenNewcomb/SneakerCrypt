@@ -2,20 +2,22 @@
 import sys
 
 def getMessage():
-	print("A Sneakercrypt message can be 200 characters long.")
 	message = input("Message : ")
-	if len(message) > 200:
-		print("Message is longer than 200 characters. Sneakercrypt will abort.")
-		exit()
 	return message
 
 def encrypt(pad):
 	"""Encrypts the message with the given pad."""
-	# Get message.
+	# Get message
+	print("A Sneakercrypt message can be 200 characters long.")
 	message = getMessage()
 	
 	# Convert message to byte array
 	message_bytes = bytearray(message, 'utf-8')
+	
+	# Make sure message is <= 200 characters
+	if len(message_bytes) > 200:
+		print("Message is longer than 200 characters. Sneakercrypt will abort.")
+		exit()
 	
 	# Pad message to 200 characters:
 	while len(message_bytes) < 200:

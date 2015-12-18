@@ -5,12 +5,8 @@ def getMessage():
 	message = input("Message : ")
 	return message
 
-def encrypt(pad):
-	"""Encrypts the message with the given pad."""
-	# Get message
-	print("A Sneakercrypt message can be 200 characters long.")
-	message = getMessage()
-	
+def binaryMessage(message):
+	"""Converts a message into a padded 200-character bytearray."""
 	# Convert message to byte array
 	message_bytes = bytearray(message, 'utf-8')
 	
@@ -22,36 +18,48 @@ def encrypt(pad):
 	# Pad message to 200 characters:
 	while len(message_bytes) < 200:
 		message_bytes.append(0)
+	
+	return message_bytes
 
+def encrypt(pad):
+	"""Encrypts the message with the given pad."""
+	# Get message
+	print("A Sneakercrypt message can be 200 characters long.")
+	message = getMessage()
+	message_bytes = binaryMessage(message)
+	
+	# Construct a bytearray from the pad.
 	pad_bytes = bytearray(pad)
 	
+	# XOR message with pad to encrypt.
 	cypherbits = []
 	for byte in range(0, len(message_bytes)):
-		# xor returns an int, which is what a bytearray.append(int) expects
 		cypherchar = message_bytes[byte] ^ pad_bytes[byte]
 		cypherbits.append(cypherchar)
 	
 	print("Encrypted Cyphertext:")
 	for bit in cypherbits:
 		sys.stdout.write(str(bit) + '$')
-
 	sys.stdout.write("\n")
 	sys.stdout.flush()
 	
 
 def decrypt(pad):
 	"""Decrypts given message with given pad."""
-	# Construct bytearray from message
+	# Parse message and construct bytearray
 	message = getMessage().split('$')[:-1]
 	message_bytes = bytearray()
 	for word in message:
 		message_bytes.append(int(word))
 
-	pad_bytes     = bytearray(pad)
+	# Construct a bytearray from the pad.
+	pad_bytes = bytearray(pad)
 
+	# ...and again, XOR message with pad to decrypt.
 	plaintext = bytearray()
 	for byte in range(0, len(message_bytes)):
 		plainchar = message_bytes[byte] ^ pad_bytes[byte]
 		plaintext.append(plainchar)
+
 	print("Decrypted Plaintext:")
 	print(plaintext.decode('utf-8'))

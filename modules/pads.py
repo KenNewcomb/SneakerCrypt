@@ -2,6 +2,7 @@
 import os
 
 def readPads():
+	"""Reads the pads from the filesystem."""
 	inpads  = os.listdir('./inpads')
 	outpads = os.listdir('./outpads')
 	return [inpads, outpads]
@@ -27,11 +28,11 @@ def printPads(padtype = None):
 	if len(inpads) > 0 and padtype != 'outpad':
 		print("Inpads:")
 		for pad in inpads:
-			size = str(os.stat('./inpads/{0}'.format(pad)).st_size/1000.0)
-			print("\t{0}.) {1}\t\t{2} KB".format(inpads.index(pad) + 1, pad, size))
+			size = int(os.stat('./inpads/{0}'.format(pad)).st_size/200)
+			print("\t{0}.) {1}\t\t{2} messages remaining.".format(inpads.index(pad) + 1, pad, size))
 	
 	if len(outpads) > 0 and padtype != 'inpad':
 		print("Outpads:")
 		for pad in outpads:
-			size = str(os.stat('./outpads/{0}'.format(pad)).st_size/1000.0)
-			print("\t{0}.) {1}\t\t{2} KB".format(outpads.index(pad) + 1, pad, size))
+			size = int(os.stat('./outpads/{0}'.format(pad)).st_size/200)
+			print("\t{0}.) {1}\t\t{2} messages remaining.".format(outpads.index(pad) + 1, pad, size))

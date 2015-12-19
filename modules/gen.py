@@ -5,12 +5,12 @@ import sys
 
 def userPrompt():
 	"""Prompts the user for a bit of input regarding pad generation."""
-	print("How many kilobytes of random numbers would you like to generate?")
+	print("How much entropy would you like to generate?")
 	print("   10 kilobytes =    25 messages (\"The Quick Update\")")
 	print("  100 kilobytes =   250 messages (\"The Conversation\")")
 	print(" 1000 kilobytes =  2500 messages (\"Some Discussions\")")
 	print("10000 kilobytes = 25000 messages (\"Social Butterfly\")")
-	num_kb = int(input("Generate (kilobytes) :  "))
+	num_kb = int(input("Pad Size (kB):  "))
 	if num_kb > 50:
 		time = (num_kb/2.0)/60.0
 		answer = input("Generating {0} kilobytes will require approximately {1:.1f} minutes. Continue? (Y/n) ".format(num_kb, time))

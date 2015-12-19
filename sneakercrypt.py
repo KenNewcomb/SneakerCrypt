@@ -24,7 +24,7 @@ def logo():
  /(__/  |  |_/|__/\_/|_/| \_/|__/   |_/\___/   |_/ \_/|/|__/ |_/
                                                      /|/|       
                                                      \|\|   
-              Unbreakable Encryption for the Masses.\n """)
+             Unbreakable Encryption for the Masses.\n """)
 # Sanitize input
 if len(sys.argv) != 2:
 	usage()

@@ -61,5 +61,10 @@ def decrypt(pad):
 		plainchar = message_bytes[byte] ^ pad_bytes[byte]
 		plaintext.append(plainchar)
 
-	print("Decrypted Plaintext:")
-	print(plaintext.decode('utf-8'))
+	try:
+		print("Decrypted Plaintext:")
+		print(plaintext.decode('utf-8'))
+	except UnicodeDecodeError:
+		print("Sneakercrypt cannot utf-8 decode the plaintext. This usually signals something seriously wrong.")
+		print("Check to make sure that you copied the entire cypertext to clipboard. Exiting now - not chopping bits.")
+		exit()

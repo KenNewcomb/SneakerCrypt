@@ -2,12 +2,26 @@
 import os
 
 def readPads():
-	"""Reads the pads from the filesystem."""
+	"""Read the list of pads from the disk."""
 	inpads  = os.listdir('./inpads')
 	outpads = os.listdir('./outpads')
 	return [inpads, outpads]
 
 def getPad(user, padtype):
+	"""Read a user's pad."""
+	# If the user gives an pad ID
+	try:
+		usernumber = int(user) - 1
+		if padtype == 'inpad':
+			# readPads()[0] = inpads, readPads()[1] = outpads.
+			user = readPads()[0][usernumber]
+		else:
+			user = readPads()[1][usernumber]
+	except ValueError:
+		# the user gave a username, no problem
+		pass
+	
+	# If the user gives a username
 	try:
 		pad = open('./{0}s/{1}'.format(padtype, user), 'rb').read()
 		return pad
@@ -23,16 +37,22 @@ def chop(user, padtype):
 		f.write(chopped_pad)
 
 def printPads(padtype = None):
+	"""Print a list of pads, and return whether pads exists."""
 	[inpads, outpads] = readPads()
+	pad_exists = False
 	
 	if len(inpads) > 0 and padtype != 'outpad':
+		pad_exists = True
 		print("Inpads:")
 		for pad in inpads:
 			size = int(os.stat('./inpads/{0}'.format(pad)).st_size/200)
 			print("\t{0}.) {1}\t\t{2} messages remaining.".format(inpads.index(pad) + 1, pad, size))
 	
 	if len(outpads) > 0 and padtype != 'inpad':
+		pad_exists = True
 		print("Outpads:")
 		for pad in outpads:
 			size = int(os.stat('./outpads/{0}'.format(pad)).st_size/200)
 			print("\t{0}.) {1}\t\t{2} messages remaining.".format(outpads.index(pad) + 1, pad, size))
+	
+	return pad_exists

@@ -36,14 +36,20 @@ if mode == 'pads':
 elif mode == 'generate':
 	gen.genPad()
 elif mode == 'encrypt':
-	pads.printPads('outpad')
-	name = input("Please choose an outpad to encrypt your message: ")
-	crypto.encrypt(pads.getPad(name, 'outpad'))
-	pads.chop(name, 'outpad')
+	pad_exists = pads.printPads('outpad')
+	if pad_exists:
+		name = input("Please choose an outpad to encrypt your message: ")
+		crypto.encrypt(pads.getPad(name, 'outpad'))
+		pads.chop(name, 'outpad')
+	else:
+		print("There are no outpads. Generate one.")
 elif mode == 'decrypt':
-	pads.printPads('inpad')
-	name = input("Please choose an inpad to decrypt your message: ")
-	crypto.decrypt(pads.getPad(name, 'inpad'))
-	pads.chop(name, 'inpad')
+	pad_exists = pads.printPads('inpad')
+	if pad_exists:
+		name = input("Please choose an inpad to decrypt your message: ")
+		crypto.decrypt(pads.getPad(name, 'inpad'))
+		pads.chop(name, 'inpad')
+	else:
+		print("There are no inpads. Obtain one from a friend.")
 else:
 	usage()

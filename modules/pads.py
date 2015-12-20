@@ -7,16 +7,23 @@ def readPads():
 	outpads = os.listdir('./outpads')
 	return [inpads, outpads]
 
+def getUser(usernumber, padtype):
+	"""Get the username, given the usernumber."""
+	if padtype == 'inpad':
+		# readPads()[0] = inpads
+		user = readPads()[0][usernumber]
+	else:
+		# readPads()[1] = outpads
+		user = readPads()[1][usernumber]
+
+	return user
+
 def getPad(user, padtype):
 	"""Read a user's pad."""
 	# If the user gives an pad ID
 	try:
 		usernumber = int(user) - 1
-		if padtype == 'inpad':
-			# readPads()[0] = inpads, readPads()[1] = outpads.
-			user = readPads()[0][usernumber]
-		else:
-			user = readPads()[1][usernumber]
+		user = getUser(usernumber, padtype)
 	except ValueError:
 		# the user gave a username, no problem
 		pass
@@ -31,6 +38,11 @@ def getPad(user, padtype):
 
 def chop(user, padtype):
 	"""Chop 200 bytes off of the pad."""
+	try:
+		usernumber = int(user) - 1
+		user = getUser(usernumber, padtype)
+	except ValueError:
+		paass
 	pad_bytes = bytearray(getPad(user, padtype))
 	chopped_pad = pad_bytes[200:]
 	with open('./{0}s/{1}'.format(padtype, user), 'wb') as f:

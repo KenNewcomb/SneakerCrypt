@@ -16,16 +16,23 @@ The XOR operation produces a 1 if the bits differ (a 0 and a 1), and a 0 if the 
 
 After the message is decrypted by the receiving party, Sneakercrypt erases the bits from the pad, preventing parties that have intercepted the ciphertext from decrypting the message if the pad is stolen. One-time pad cryptography is invulnerable to "cipher-text only attacks", and provides **complete** communication security, as long as two (admittedly nontrivial) conditions are met:
 
-1. The generated pads are truly random.
+1. The generated pads are truly random (see custom entropy source discussion below)
 2. The pads are kept secret.
 
-## Motivation
-Public-key encryption exists and protects the internet. Why does the world need Sneakercrypt? After all, since Sneakercrypt doesn't rely on fancy mathematics, parties wishing to securely communicate must meet in person to exchange keys, a highly inconvenient task. The answer is that one-time pads can help two parties communicate when other forms of encryption fall short. Public-key encryption is [mathematically complicated](https://en.wikipedia.org/wiki/RSA_%28algorithm%29#Key_generation), and [implementations are prone to bugs](https://en.wikipedia.org/wiki/Heartbleed). Sneakercrypt is a relatively small package, making bugs quite shallow and easy to detect. In addition, while public-key encryption algorithms are rely on computationally intractible problems, there is some evidence to suggest that an adversary with a quantum computer can solve these problems. For some, Sneakercrypt may be the **only** reliable option.    
+## Why do we need Sneakercrypt?
+Public-key encryption exists and protects the internet. Why does the world need Sneakercrypt? The answer is that one-time pads can help two parties communicate when all other forms of encryption fall short. Public-key encryption is [mathematically rigorous](https://en.wikipedia.org/wiki/RSA_%28algorithm%29#Key_generation) restricting the amount of eyes that can audit the code, and [implementations are prone to bugs](https://en.wikipedia.org/wiki/Heartbleed). Sneakercrypt is a relatively small package, making bugs quite shallow and easy to detect. In addition, while public-key encryption algorithms are rely on computationally intractible problems, there is some evidence to suggest that an adversary with a quantum computer can solve these problems. For some, Sneakercrypt may be the **only** reliable option.    
 
 ## Dependencies
 Sneakercrypt strives to rely on as few dependencies as possible. Currently, these include:
 
 1. python3
+
+## Future Goals
+The project has a few future goals that we are working towards (please contact if you are interested in helping develop!):
+
+1. A [Django](https://djangoproject.com/) based server that Sneakercrypt clients can connect to.
+2. Custom sources of entropy. Some individuals may not wish to rely on their computer's hardware-based RNG. We would like the ability for users to use atmospheric data, thermal noise, or their own custom source of entropy.
+3. Support for communication over [Tor]("https://www.torproject.org/"). 
 
 ## Usage
 	python3 sneakercrypt.py <command>

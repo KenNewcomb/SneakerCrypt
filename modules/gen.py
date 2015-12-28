@@ -10,7 +10,11 @@ def userPrompt():
 	print("  100 kilobytes =   250 messages (\"The Conversation\")")
 	print(" 1000 kilobytes =  2500 messages (\"Some Discussions\")")
 	print("10000 kilobytes = 25000 messages (\"Social Butterfly\")")
-	num_kb = int(input("Pad Size (kB):  "))
+	try:
+		num_kb = int(input("Pad Size (kB):  "))
+	except ValueError:
+		print("Pad size must be an integer! Sneakercrypt will abort.")
+		exit()
 	if num_kb > 50:
 		time = (num_kb/2.0)/60.0
 		answer = input("Generating {0} kilobytes will require approximately {1:.1f} minutes. Continue? (Y/n) ".format(num_kb, time))

@@ -42,7 +42,7 @@ def chop(user, padtype):
 		usernumber = int(user) - 1
 		user = getUser(usernumber, padtype)
 	except ValueError:
-		paass
+		pass
 	pad_bytes = bytearray(getPad(user, padtype))
 	chopped_pad = pad_bytes[200:]
 	with open('./{0}s/{1}'.format(padtype, user), 'wb') as f:

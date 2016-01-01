@@ -1,0 +1,4 @@
+# Ignore all pads in this directory...
+*
+# But include this file, of course!
+!.gitignore
